@@ -17,6 +17,7 @@ import com.practice.customer.entities.Customer;
 import com.practice.customer.service.CustomerService;
 
 @RestController
+@RequestMapping("/api")
 public class CustomerController {
 	
 	@Autowired
