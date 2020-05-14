@@ -6,13 +6,15 @@ import com.practice.customer.entities.Customer;
 
 public interface CustomerService {
 
-	Customer saveCustomer(Customer customer);
+	Customer saveCustomer(Customer customer) throws Exception;
 	
-	Customer updateCustomer(Customer customer);
+	Customer updateCustomer(Customer customer)throws Exception;
 	
-	Customer getCustomerById(int id);
+	List<Customer> getCustomerById(int id)throws Exception;
 	
-	List<Customer> getAllCustomers();
+	Customer getSingleCustomerById(int id)throws Exception;
 	
-	void deleteCustomer(Customer customer);
+	List<Customer> getAllCustomers()throws Exception;
+	
+	void deleteCustomer(int id)throws Exception;
 }

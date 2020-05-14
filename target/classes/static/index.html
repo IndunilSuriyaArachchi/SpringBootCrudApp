@@ -56,14 +56,9 @@
 					var id = $(this).attr('id');
 					var parent = $(this).parent().parent();
 					$.ajax({
-						type: "POST",
+						type: "DELETE",
 						contentType: "application/json; charset=utf-8",
-						url: "http://localhost:8080/SpringBootCrudApp/customer/delete/",
-						data: JSON.stringify({'id' : id, 
-							'name' : '',
-							'age' : '',
-							'salary' : ''
-						}),
+						url: "http://localhost:8080/SpringBootCrudApp/customer/delete/" + id,
 						cache: false,
 						success: function() {
 							parent.fadeOut('slow', function() {
@@ -105,9 +100,9 @@
 				var buttons = parent.children("td:nth-child(5)");
 				
 				$.ajax({
-					type: "POST",
+					type: "PUT",
 					contentType: "application/json; charset=utf-8",
-					url: "http://localhost:8080/SpringBootCrudApp/customer/save",
+					url: "http://localhost:8080/SpringBootCrudApp/customer/update",
 					data: JSON.stringify({'id' : id.html(), 
 						'name' : name.children("input[type=text]").val(),
 						'age' : age.children("input[type=text]").val(),
