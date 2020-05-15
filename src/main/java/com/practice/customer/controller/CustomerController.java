@@ -26,16 +26,20 @@ public class CustomerController {
 	
 	
 	@RequestMapping(method=RequestMethod.POST, value= "/customer/save")
-	public ResponseEntity<String> saveCustomer(@RequestBody Customer customer) {
+	public ResponseEntity<?> saveCustomer(@RequestBody Customer customer) {
 		response = new JSONObject();
+		Customer saveCustomer=null;
 		try {
-			service.saveCustomer(customer);
+			saveCustomer = service.saveCustomer(customer);
 			response.accumulate("status", "SUCCESS");
 		}catch (Exception e) {
 			response.accumulate("status", "ERROR");
 			e.printStackTrace();
 		}
-		return ResponseEntity.ok(response.toString());
+		
+		System.out.println("save customer done");
+		
+		return ResponseEntity.ok(saveCustomer);
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value="/customer/filter/{id}")
@@ -50,20 +54,21 @@ public class CustomerController {
 	}
 	
 	@RequestMapping(method=RequestMethod.PUT, value= "/customer/update")
-	public ResponseEntity<String> updateCustomer(@RequestBody Customer customer) {
+	public ResponseEntity<?> updateCustomer(@RequestBody Customer customer) {
 		response = new JSONObject();
+		Customer updateCustomer=null;
 		try {
-			service.updateCustomer(customer);
+			updateCustomer=service.updateCustomer(customer);
 			response.accumulate("status", "SUCCESS");
 		} catch (Exception e) {
 			e.printStackTrace();
 			response.accumulate("status", "ERROR");
 		}
-		return ResponseEntity.ok(response.toString());
+		return ResponseEntity.ok(updateCustomer);
 	}
 
 	@RequestMapping(method=RequestMethod.DELETE, value= "/customer/delete/{id}")
-	public ResponseEntity<String> deleteCustomer(@PathVariable int id) {
+	public ResponseEntity<?> deleteCustomer(@PathVariable int id) {
 		response = new JSONObject();
 		try {
 			service.deleteCustomer(id);
@@ -72,6 +77,9 @@ public class CustomerController {
 			response.accumulate("status", "ERROR");
 			e.printStackTrace();
 		}
+		
+		System.out.println("delete changed");
+		
 		return ResponseEntity.ok(response.toString());
 		
 		

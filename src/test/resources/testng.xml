@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="mySuite" verbose="2" preserve-order="true">
+	
+	<!--  <test name="Test1">
+		<classes>
+			<class name="com.practice.methods.TestNgBasicTest" />
+		</classes>
+	</test> -->
+	
+	<!--  <test name="Test2">
+		<classes>
+			<class name="com.practice.methods.TestNgServiceCallTest" />
+		</classes>
+	</test>-->
+	
+	<test name="Test3">
+		<classes>
+			<!-- <class name="com.practice.methods.TestControllerWithRestTemplate" />-->
+			<class name="com.practice.methods.TestControllerWithMockMvc" />
+		</classes>
+	</test>
+	
+</suite>
